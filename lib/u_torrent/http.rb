@@ -22,6 +22,7 @@ module UTorrent
       UTorrent.log.debug "UTorrent::Http.get #{request.path}"
 
       http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true if uri.uri.scheme == 'https'
       http.request(request)
     end
 
